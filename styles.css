@@ -1,0 +1,128 @@
+:root {
+    --tg-color-scheme: light;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    background-color: var(--tg-theme-bg-color, #ffffff);
+    color: var(--tg-theme-text-color, #000000);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: var(--tg-theme-link-color, #2481cc);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+h2 {
+    color: var(--tg-theme-link-color, #2481cc);
+    margin-bottom: 15px;
+    font-size: 18px;
+    border-bottom: 2px solid var(--tg-theme-hint-color, #ccc);
+    padding-bottom: 5px;
+}
+
+.user-info,
+.form-section,
+.test-section,
+.storage-section,
+.debug-section {
+    background-color: var(--tg-theme-secondary-bg-color, #f8f9fa);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid var(--tg-theme-section-separator-color, #e9ecef);
+}
+
+.user-info p {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.user-info strong {
+    color: var(--tg-theme-accent-text-color, #2481cc);
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid var(--tg-theme-hint-color, #ced4da);
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: var(--tg-theme-bg-color, #ffffff);
+    color: var(--tg-theme-text-color, #000000);
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--tg-theme-link-color, #2481cc);
+}
+
+button {
+    padding: 12px 20px;
+    background-color: var(--tg-theme-button-color, #2481cc);
+    color: var(--tg-theme-button-text-color, #ffffff);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 5px 5px 5px 0;
+    min-width: 120px;
+}
+
+button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.test-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    align-items: start;
+}
+
+.test-section h2 {
+    grid-column: 1 / -1;
+}
+
+.storage-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: start;
+}
+
+.storage-section h
