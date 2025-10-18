@@ -23,10 +23,12 @@ function initApp() {
         setupEventListeners();
         setupMainButton();
         updateDebugInfo();
+        setupCryptoSection();
         console.log('✅ Mini App inicializada correctamente');
     } catch (error) {
         console.error('❌ Error inicializando la app:', error);
         showError('Error al inicializar la aplicación: ' + error.message);
+        
     }
 }
 
@@ -275,12 +277,6 @@ window.tgDebug = {
     testColorChange,
     appState,
     tg
-
-    document.addEventListener('DOMContentLoaded', function() {
-    if (document.getElementById('refreshCrypto')) {
-        setupCryptoSection();
-    }
-});
 
 function setupCryptoSection() {
     loadCryptoPrices();
