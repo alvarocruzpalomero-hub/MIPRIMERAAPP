@@ -125,4 +125,18 @@ button:disabled {
     align-items: start;
 }
 
-.storage-section h
+.crypto-section {
+    background-color: var(--tg-theme-secondary-bg-color, #f8f9fa);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid var(--tg-theme-section-separator-color, #e9ecef);
+}
+.crypto-section h2 {
+    color: #57a6ff;
+    margin-bottom: 10px;
+}
+.crypto-section button {
+    margin-top: 10px;
+}
+
