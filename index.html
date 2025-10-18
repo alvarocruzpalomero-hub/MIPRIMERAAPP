@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Primera Mini App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Mi Primera Mini App</h1>
+        
+        <div class="user-info">
+            <h2>👤 Información del Usuario</h2>
+            <p><strong>Nombre:</strong> <span id="usuario">Cargando...</span></p>
+            <p><strong>ID:</strong> <span id="userId">Cargando...</span></p>
+            <p><strong>Tema:</strong> <span id="tema">Cargando...</span></p>
+            <p><strong>Plataforma:</strong> <span id="plataforma">Cargando...</span></p>
+        </div>
+        
+        <div class="form-section">
+            <h2>💬 Enviar Mensaje</h2>
+            <input type="text" id="mensaje" placeholder="Escribe un mensaje para el bot...">
+            <button id="enviarBtn">Enviar Mensaje</button>
+        </div>
+        
+        <div class="test-section">
+            <h2>🧪 Probar Funcionalidades</h2>
+            <button id="vibracionBtn">📳 Vibración</button>
+            <button id="popupBtn">💬 Mostrar Popup</button>
+            <button id="colorBtn">🎨 Cambiar Color</button>
+            <button id="infoBtn">ℹ️ Info Completa</button>
+        </div>
+        
+        <div class="storage-section">
+            <h2>☁️ Cloud Storage Test</h2>
+            <input type="text" id="storageKey" placeholder="Clave">
+            <input type="text" id="storageValue" placeholder="Valor">
+            <button id="guardarBtn">💾 Guardar</button>
+            <button id="cargarBtn">📥 Cargar</button>
+            <div id="storageResult"></div>
+        </div>
+        
+        <div class="debug-section">
+            <h2>🔧 Debug Info</h2>
+            <pre id="debugInfo">Información técnica aparecerá aquí...</pre>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
