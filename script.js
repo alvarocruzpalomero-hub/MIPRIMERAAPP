@@ -275,6 +275,34 @@ window.tgDebug = {
     testColorChange,
     appState,
     tg
+
+    document.addEventListener('DOMContentLoaded', function() {
+    if (document.getElementById('refreshCrypto')) {
+        setupCryptoSection();
+    }
+});
+
+function setupCryptoSection() {
+    loadCryptoPrices();
+    document.getElementById('refreshCrypto').addEventListener('click', loadCryptoPrices);
+}
+
+function loadCryptoPrices() {
+    document.getElementById('btcPrice').textContent = '...';
+    document.getElementById('ethPrice').textContent = '...';
+
+    fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd")
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('btcPrice').textContent = data.bitcoin.usd + ' USD';
+            document.getElementById('ethPrice').textContent = data.ethereum.usd + ' USD';  
+        })
+        .catch(() => {
+            document.getElementById('btcPrice').textContent = 'Error';
+            document.getElementById('ethPrice').textContent = 'Error';
+        });
+}
+
 };
 
 console.log('📱 Mini App de Telegram cargada. Usa window.tgDebug para debugging.');
