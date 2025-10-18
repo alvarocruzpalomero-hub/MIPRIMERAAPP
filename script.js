@@ -302,3 +302,4 @@ function loadCryptoPrices() {
 };
 
 console.log('📱 Mini App de Telegram cargada. Usa window.tgDebug para debugging.');
+// v1.1
