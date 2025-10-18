@@ -28,7 +28,6 @@ function initApp() {
     } catch (error) {
         console.error('❌ Error inicializando la app:', error);
         showError('Error al inicializar la aplicación: ' + error.message);
-        
     }
 }
 
@@ -277,6 +276,7 @@ window.tgDebug = {
     testColorChange,
     appState,
     tg
+};
 
 function setupCryptoSection() {
     loadCryptoPrices();
@@ -299,7 +299,4 @@ function loadCryptoPrices() {
         });
 }
 
-};
-
 console.log('📱 Mini App de Telegram cargada. Usa window.tgDebug para debugging.');
-// v1.1
