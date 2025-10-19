@@ -139,4 +139,31 @@ button:disabled {
 .crypto-section button {
     margin-top: 10px;
 }
+.broker-section {
+    background-color: var(--tg-theme-secondary-bg-color, #f4f5fa);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+}
+.broker-section h2 {
+    color: #4593fc;
+    margin-bottom: 10px;
+}
+.broker-section input[type="text"] {
+    padding: 8px 12px;
+    border-radius: 7px;
+    border: 1px solid #ccc;
+    margin-right: 8px;
+    width: 160px;
+}
+.broker-section button {
+    margin-top: 8px;
+}
+#brokerResult {
+    margin-top: 14px;
+    font-size: 1rem;
+    color: #1a2233;
+}
+
 
