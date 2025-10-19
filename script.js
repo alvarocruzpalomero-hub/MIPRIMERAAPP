@@ -315,7 +315,7 @@ function setupBrokerSection() {
 }
 
 function getBrokerInfo(ticker) {
-    const apiKey = d1PO0wi8UGxML1mMtH4xPj5RwQHW3gpD; // <- Pon aquí tu API KEY de FMP
+    const apiKey = "d1PO0wi8UGxML1mMtH4xPj5RwQHW3gpD"; // <- Pon aquí tu API KEY de FMP
     const resultDiv = document.getElementById('brokerResult');
     resultDiv.textContent = '⏳ Buscando datos...';
 
