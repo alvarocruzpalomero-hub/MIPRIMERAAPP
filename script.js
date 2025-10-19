@@ -300,3 +300,75 @@ function loadCryptoPrices() {
 }
 
 console.log('📱 Mini App de Telegram cargada. Usa window.tgDebug para debugging.');
+document.addEventListener('DOMContentLoaded', function() {
+  if (document.getElementById('searchTicker')) {
+    setupBrokerSection();
+  }
+});
+
+function setupBrokerSection() {
+    document.getElementById('searchTicker').addEventListener('click', function() {
+        const ticker = document.getElementById('tickerInput').value.trim().toUpperCase();
+        if (!ticker) return;
+        getBrokerInfo(ticker);
+    });
+}
+
+function getBrokerInfo(ticker) {
+    const apiKey = d1PO0wi8UGxML1mMtH4xPj5RwQHW3gpD; // <- Pon aquí tu API KEY de FMP
+    const resultDiv = document.getElementById('brokerResult');
+    resultDiv.textContent = '⏳ Buscando datos...';
+
+    // Info rápida del activo
+    fetch(`https://financialmodelingprep.com/api/v3/profile/${ticker}?apikey=${apiKey}`)
+        .then(r => r.json())
+        .then(profile => {
+            if (!profile || !profile[0]) {
+                resultDiv.textContent = "⚠️ No encontrado. Verifica el ticker.";
+                return;
+            }
+            const company = profile[0];
+
+            // Datos fundamentales y beneficios históricos
+            Promise.all([
+                fetch(`https://financialmodelingprep.com/api/v3/income-statement/${ticker}?limit=10&apikey=${apiKey}`).then(r => r.json()),
+                fetch(`https://financialmodelingprep.com/api/v3/balance-sheet-statement/${ticker}?limit=3&apikey=${apiKey}`).then(r => r.json()),
+                fetch(`https://financialmodelingprep.com/api/v3/key-metrics/${ticker}?apikey=${apiKey}`).then(r => r.json())
+            ]).then(([income, balance, metrics]) => {
+                const lastIncome = income[0];
+                const lastBalance = balance[0];
+                const lastMetrics = metrics[0];
+
+                let infoHtml = `
+                  <b>${company.companyName || company.name} (${ticker})</b><br>
+                  <b>Precio actual:</b> $${company.price} (${company.changesPercentage})<br>
+                  <b>Sector:</b> ${company.sector || '-'}<br>
+                  <b>P/E Ratio:</b> ${lastMetrics.peRatio || '-'}<br>
+                  <b>ROE:</b> ${lastMetrics.roe || '-'}<br>
+                  <b>Beneficio neto último año:</b> $${lastIncome.netIncome}<br>
+                  <b>Dividendos:</b> ${lastIncome.dividendsPaid || '-'}<br>
+                  <b>Capitalización:</b> $${company.mktCap}<br>
+                  <b>Año fiscal:</b> ${lastIncome.calendarYear}<br>
+                  <b>Márgenes netos:</b> ${lastMetrics.netProfitMargin || '-'}<br>
+                  <b>Ingresos:</b> $${lastIncome.revenue}<br>
+                  <b>Deuda/Capital:</b> ${lastMetrics.debtToEquity || '-'}<br>
+                  <b>Beneficios 3 años:</b><br>
+                `;
+
+                income.slice(0, 3).forEach((yr) => {
+                    infoHtml += `${yr.calendarYear}: $${yr.netIncome} <br>`;
+                });
+
+                infoHtml += `<br><b>Rentabilidad 10 años:</b><br>`;
+                income.forEach((yr) => {
+                    infoHtml += `${yr.calendarYear}: <b>$${yr.netIncome}</b> | Ingresos: $${yr.revenue}<br>`;
+                });
+
+                resultDiv.innerHTML = infoHtml;
+            });
+        })
+        .catch(() => {
+            resultDiv.textContent = "❌ Error al buscar datos.";
+        });
+}
+
